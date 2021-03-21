@@ -20,6 +20,6 @@ public class App
 		LOG.fatal(message + " Will be Printed On Fatal ");
 		LOG.info("Appending string :{}.",message);
         System.out.println( message );
-		System.out.println( "Ashish" );
+		System.out.println( "Ashish Rathod" );
     }
 }
