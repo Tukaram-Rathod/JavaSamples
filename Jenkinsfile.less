@@ -1,0 +1,37 @@
+pipeline {
+    environment {
+    dockerimagename = "tukaramrathod02/react-app"
+    dockerImage = ""
+    }
+
+    agent any
+
+    stages {        
+
+        stage('Checkout Source') {
+            steps {
+                git 'https://github.com/Tukaram-Rathod/jenkins-kubernetes-deployemnt.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    run 'docker build tukaramrathod02/react-app .'
+                }
+            }
+        }        
+        stage('Deploy') {
+            steps {
+                run 'kubectl apply -f devlopment.yaml'
+                run 'kubectl apply -f devlopment.yaml'
+            }
+        }
+        stage('Test') {
+            steps {
+                run 'kubectl get pod'
+                run 'kubectl get node'
+            }
+        }
+    }
+}
